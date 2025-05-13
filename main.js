@@ -39,7 +39,7 @@ function resetContainerSize() {
 }
 
 function refreshGame() {
-    const iframe = document.getElementById("game-frame");
+    const iframe = document.getElementById("myiframe");
 
     if (iframe) {
         const currentSrc = iframe.getAttribute("src");
@@ -56,7 +56,7 @@ function refreshGame() {
 
 // Ensure the iframe is loaded before trying to refresh
 document.addEventListener("DOMContentLoaded", function() {
-    const iframe = document.getElementById("game-frame");
+    const iframe = document.getElementById("myiframe");
     if (iframe) {
         console.log("Game iframe is loaded and ready.");
     } else {
