@@ -31,24 +31,26 @@ document.addEventListener("MSFullscreenChange", resetContainerSize);     // Inte
 // Automatically Reset the Container Size
 function resetContainerSize() {
     const fullscreenContainer = document.getElementById('fullscreen-container');
-    if (!document.fullscreenElement) {
+    if (fullscreenContainer && !document.fullscreenElement) {
         fullscreenContainer.classList.remove("fullscreen");
         fullscreenContainer.style.width = "854px";
         fullscreenContainer.style.height = "480px";
     }
 }
 
+// Refresh Game (Force Reload Iframe)
 function refreshGame() {
     const iframe = document.getElementById("myiframe");
 
     if (iframe) {
         const currentSrc = iframe.getAttribute("src");
-        const newSrc = currentSrc.includes("?")
-            ? currentSrc.split("?")[0] + "?t=" + new Date().getTime()
-            : currentSrc + "?t=" + new Date().getTime();
-        
-        iframe.src = newSrc;
-        console.log("Game refreshed:", newSrc);
+        if (currentSrc) {
+            const newSrc = currentSrc.split("?")[0] + "?t=" + new Date().getTime();
+            iframe.src = newSrc;
+            console.log("Game refreshed:", newSrc);
+        } else {
+            console.error("Error: Game iframe has no source URL.");
+        }
     } else {
         console.error("Error: Game iframe not found.");
     }
