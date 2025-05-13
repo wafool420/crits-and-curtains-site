@@ -67,11 +67,44 @@ h1 {
     
 }
 
+#main-title {
+    font-size: 50px;
+}
+
 .changelogs h1, h3, ul {
     color: white;
     font-family: "Pixelify Sans", sans-serif;
 }
 
+@media (max-width: 768px) {
+  /* CSS rules for screens 768px wide or smaller */
+  .fullscreen-container {
+    width: 320px;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    background-color: blue;
+}
+
+h1 {
+    font-size: 25px;
+}
+
+#main-title {
+    font-size: 30px;
+    margin-bottom: 50px;
+}
+
+.changelogs {
+    transform: scale(0.7);
+}
+
+
+
+
+}
 
 
 
