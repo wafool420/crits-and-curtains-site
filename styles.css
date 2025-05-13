@@ -76,34 +76,67 @@ h1 {
     font-family: "Pixelify Sans", sans-serif;
 }
 
-@media (max-width: 768px) {
-  /* CSS rules for screens 768px wide or smaller */
-  .fullscreen-container {
-    width: 320px;
-    height: 240px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 0;
-    background-color: blue;
+ 
+
+/* This will only apply when the device is in portrait orientation */
+@media (orientation: portrait) and (max-width: 768px) {
+    .fullscreen-container {
+        width: 320px;
+        height: 240px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        background-color: blue;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #main-title {
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+
+    .changelogs {
+        transform: scale(0.7);
+    }
+
+
+
 }
 
-h1 {
-    font-size: 25px;
-}
-
-#main-title {
-    font-size: 30px;
-    margin-bottom: 50px;
-}
-
-.changelogs {
-    transform: scale(0.7);
-}
 
 
 
 
+
+/* Landscape */
+
+@media (orientation: landscape) and (max-width: 800px) {
+    .fullscreen-container {
+        width: 600px;
+        height: 340px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 0;
+        background-color: blue;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    #main-title {
+        font-size: 30px;
+        margin-bottom: 20px;
+    }
+
+    .changelogs {
+        transform: scale(0.7);
+    }
 }
 
 

@@ -47,7 +47,6 @@
             });
             fullscreenContainer.classList.add("fullscreen");
 
-            // Force landscape mode on mobile
             if (window.innerHeight > window.innerWidth) {
                 screen.orientation.lock("landscape").catch(err => {
                     console.warn("Unable to force landscape:", err);
