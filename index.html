@@ -40,19 +40,24 @@
 </body>
 <script>
         function toggleFullscreen() {
-            const fullscreenContainer = document.getElementById('fullscreen-container');
-            if (!document.fullscreenElement) {
-                fullscreenContainer.requestFullscreen().catch(err => {
-                    alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+        const fullscreenContainer = document.getElementById('fullscreen-container');
+        if (!document.fullscreenElement) {
+            fullscreenContainer.requestFullscreen().catch(err => {
+                alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+            });
+            fullscreenContainer.classList.add("fullscreen");
+
+            // Force landscape mode on mobile
+            if (window.innerHeight > window.innerWidth) {
+                screen.orientation.lock("landscape").catch(err => {
+                    console.warn("Unable to force landscape:", err);
                 });
-            } else {
-                document.exitFullscreen();
             }
+        } else {
+            document.exitFullscreen();
+            fullscreenContainer.classList.remove("fullscreen");
         }
-        function refreshGame() {
-            const iframe = document.getElementById("myiframe");
-            iframe.src = iframe.src; // This reloads the iframe without refreshing the page
-        }
+    }
         
         
 </script>
