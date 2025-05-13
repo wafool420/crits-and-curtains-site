@@ -41,5 +41,10 @@ function resetContainerSize() {
 // Refresh Game (Reload Iframe)
 function refreshGame() {
     const iframe = document.getElementById("game-frame");
-    iframe.src = iframe.src;
+    const currentSrc = iframe.getAttribute("src");
+    const newSrc = currentSrc.includes("?")
+        ? currentSrc.split("?")[0] + "?t=" + new Date().getTime()
+        : currentSrc + "?t=" + new Date().getTime();
+    
+    iframe.src = newSrc;
 }
