@@ -9,7 +9,7 @@
 </head>
 <body>
     <head>
-        <h1 id="main-title">Crits and Curtains! [PLACEHOLDER TITLE DESIGN]</h1>
+        <div class="logo"><img src="logo.png"></div>
     </head>
     <main class="main-content">
         
@@ -53,17 +53,19 @@
             }
         }
 
-        // Automatically reset size when exiting fullscreen
-        document.addEventListener("fullscreenchange", function() {
-            if (!document.fullscreenElement) {
-                resetContainerSize();
-            }
-        });
+        // Automatically reset size when exiting fullscreen on both PC and Mobile
+        document.addEventListener("fullscreenchange", resetContainerSize);
+        document.addEventListener("webkitfullscreenchange", resetContainerSize); // Safari
+        document.addEventListener("mozfullscreenchange", resetContainerSize); // Firefox
+        document.addEventListener("MSFullscreenChange", resetContainerSize); // Internet Explorer
 
         function resetContainerSize() {
             const fullscreenContainer = document.getElementById('fullscreen-container');
-            fullscreenContainer.style.width = "854px";
-            fullscreenContainer.style.height = "480px";
+            if (!document.fullscreenElement) {
+                fullscreenContainer.classList.remove("fullscreen");
+                fullscreenContainer.style.width = "854px";
+                fullscreenContainer.style.height = "480px";
+            }
         }
 
         function refreshGame() {
