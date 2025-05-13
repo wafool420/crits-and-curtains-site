@@ -38,13 +38,28 @@ function resetContainerSize() {
     }
 }
 
-// Refresh Game (Reload Iframe)
 function refreshGame() {
     const iframe = document.getElementById("game-frame");
-    const currentSrc = iframe.getAttribute("src");
-    const newSrc = currentSrc.includes("?")
-        ? currentSrc.split("?")[0] + "?t=" + new Date().getTime()
-        : currentSrc + "?t=" + new Date().getTime();
-    
-    iframe.src = newSrc;
+
+    if (iframe) {
+        const currentSrc = iframe.getAttribute("src");
+        const newSrc = currentSrc.includes("?")
+            ? currentSrc.split("?")[0] + "?t=" + new Date().getTime()
+            : currentSrc + "?t=" + new Date().getTime();
+        
+        iframe.src = newSrc;
+        console.log("Game refreshed:", newSrc);
+    } else {
+        console.error("Error: Game iframe not found.");
+    }
 }
+
+// Ensure the iframe is loaded before trying to refresh
+document.addEventListener("DOMContentLoaded", function() {
+    const iframe = document.getElementById("game-frame");
+    if (iframe) {
+        console.log("Game iframe is loaded and ready.");
+    } else {
+        console.error("Error: Game iframe not found on DOMContentLoaded.");
+    }
+});
