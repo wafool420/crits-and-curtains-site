@@ -38,41 +38,5 @@
         <h1>Credits goes to Dawnsii!</h1>
     </footer>
 </body>
-<script>
-        function toggleFullscreen() {
-            const fullscreenContainer = document.getElementById('fullscreen-container');
-            if (!document.fullscreenElement) {
-                fullscreenContainer.requestFullscreen().catch(err => {
-                    alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
-                });
-                fullscreenContainer.classList.add("fullscreen");
-            } else {
-                document.exitFullscreen();
-                fullscreenContainer.classList.remove("fullscreen");
-                resetContainerSize();
-            }
-        }
-
-        // Automatically reset size when exiting fullscreen on both PC and Mobile
-        document.addEventListener("fullscreenchange", resetContainerSize);
-        document.addEventListener("webkitfullscreenchange", resetContainerSize); // Safari
-        document.addEventListener("mozfullscreenchange", resetContainerSize); // Firefox
-        document.addEventListener("MSFullscreenChange", resetContainerSize); // Internet Explorer
-
-        function resetContainerSize() {
-            const fullscreenContainer = document.getElementById('fullscreen-container');
-            if (!document.fullscreenElement) {
-                fullscreenContainer.classList.remove("fullscreen");
-                fullscreenContainer.style.width = "854px";
-                fullscreenContainer.style.height = "480px";
-            }
-        }
-
-        function refreshGame() {
-            const iframe = document.getElementById("game-frame");
-            iframe.src = iframe.src; // This reloads the iframe without refreshing the page
-        }
-        
-        
-</script>
+<script src="main.js"></script>
 </html>
