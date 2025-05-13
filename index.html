@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crits and Curtains!</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <head>
+        <h1 style="font-size: 50px;">Crits and Curtains! [PLACEHOLDER TITLE DESIGN]</h1>
+    </head>
+    <main class="main-content">
+        
+        <div class="main-game">
+            <div class="fullscreen-container" id="fullscreen-container">
+                <iframe src="ISCritsAndCurtainsV0.4.2.2.html" width="1080px" height="720px" id="myiframe"></iframe>
+            </div>
+        </div>
+        <div class="controls">
+            <button onclick="toggleFullscreen()" style="margin-top: 5px;">Go Fullscreen</button>
+            <button onclick="refreshGame()">Refresh Game</button>
+        </div>
+        <div class="changelogs">
+            <h1>Changelogs:</h1>
+            <h3>VERSION 0.4.2.2</h3>
+            <ul>
+
+                <li>Improved Tour De Force animation.</li>
+                <li>Fixed enemies attacking eachother. (They default to now attacking player 1 if there's seemingly no remaining targets.)</li>
+                <li>Fixed enemies targeting the empty player four slot when they're meant to target the third player in multiplayer.</li>
+            </ul>
+        </div>
+        
+    </main>
+    <footer>
+        <h1>Credits goes to Dawnsii!</h1>
+    </footer>
+</body>
+<script>
+        function toggleFullscreen() {
+            const fullscreenContainer = document.getElementById('fullscreen-container');
+            if (!document.fullscreenElement) {
+                fullscreenContainer.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen mode: ${err.message} (${err.name})`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        function refreshGame() {
+            const iframe = document.getElementById("myiframe");
+            iframe.src = iframe.src; // This reloads the iframe without refreshing the page
+        }
+        
+        
+</script>
+</html>
