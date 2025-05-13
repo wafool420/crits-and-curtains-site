@@ -45,23 +45,33 @@ function refreshGame() {
     if (iframe) {
         const currentSrc = iframe.getAttribute("src");
         if (currentSrc) {
-            const newSrc = currentSrc.split("?")[0] + "?t=" + new Date().getTime();
+            const newSrc = currentSrc.includes("?")
+                ? currentSrc.split("?")[0] + "?t=" + new Date().getTime()
+                : currentSrc + "?t=" + new Date().getTime();
+            
             iframe.src = newSrc;
             console.log("Game refreshed:", newSrc);
         } else {
             console.error("Error: Game iframe has no source URL.");
         }
     } else {
-        console.error("Error: Game iframe not found.");
+        console.error("Error: Game iframe not found. Retrying...");
+        setTimeout(refreshGame, 500); // Retry after 500ms
     }
 }
 
 // Ensure the iframe is loaded before trying to refresh
 document.addEventListener("DOMContentLoaded", function() {
+    waitForIframe();
+});
+
+// Function to Wait for the Iframe to Load
+function waitForIframe() {
     const iframe = document.getElementById("myiframe");
     if (iframe) {
         console.log("Game iframe is loaded and ready.");
     } else {
-        console.error("Error: Game iframe not found on DOMContentLoaded.");
+        console.warn("Game iframe not found. Retrying in 500ms...");
+        setTimeout(waitForIframe, 500);
     }
-});
+}
