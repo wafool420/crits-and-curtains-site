@@ -1,14 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap');
 
 
-
-iframe {
-    display: flex;
-    margin: 4% auto;
-    border: none;
-    box-sizing: border-box;
-}
-
 .main-content {
     display: flex;
     flex-direction: column;
@@ -39,7 +31,14 @@ iframe {
     border: 3px solid rgb(255, 255, 255);
 }
 
-iframe {
+.main-gameiframe {
+    display: flex;
+    margin: 4% auto;
+    border: none;
+    box-sizing: border-box;
+}
+
+.main-game iframe {
     width: 1080px;
     height: 720px;
     display: block;
@@ -88,7 +87,31 @@ h1 {
     font-family: "Pixelify Sans", sans-serif;
 }
 
- 
+.main-content img {
+    margin-bottom: 60px;
+    width: 400px;
+    
+}
+
+.home_overview {
+    display: flex;
+    flex-direction: row;
+}
+
+.home_overview img {
+    width: 300px;
+    height: 200px;
+}
+
+
+
+.home_overview p{
+    font-family: "Pixelify Sans", sans-serif;;
+    font-size: 20px;
+    text-align: center;
+}
+
+
 
 /* This will only apply when the device is in portrait orientation */
 @media (orientation: portrait) and (max-width: 425px) {
